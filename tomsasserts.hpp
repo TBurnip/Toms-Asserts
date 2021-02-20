@@ -12,9 +12,13 @@ void print_buf(void* buf,int len,int max) {
     }
     char* bufForPrint = (char*) malloc(len*sizeof(char));
     memcpy(bufForPrint,buf,len);
+    int j = 0;
 
     for RANGE(i,len) {
-        printf("%X",(unsigned int)bufForPrint[i]);
+        if (i%4==0&&i!=0) {
+            printf(" ");
+        }
+        printf("%02X",(unsigned int)bufForPrint[i]);
     }
     free(bufForPrint);
     putchar('\n');
