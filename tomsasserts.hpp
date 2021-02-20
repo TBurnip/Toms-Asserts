@@ -6,7 +6,7 @@
 #define RANGE(i,max) (int i = 0; i < max; i ++)
 #define RANGE_FROM_TO(i,from,to) (int i = from; i <= to; i ++) // Take note start and end are inclusive.
 
-int print_buf(void* buf,int len,int max) {
+void print_buf(void* buf,int len,int max) {
     if (len > max) {
         len = max;
     }
@@ -16,8 +16,8 @@ int print_buf(void* buf,int len,int max) {
     for RANGE(i,len) {
         printf("%X",(unsigned int)bufForPrint[i]);
     }
+    free(bufForPrint);
     putchar('\n');
-    return true;
 }
 
 #define ASSERT(expression,FailReason) if ((expression)==false) { \
